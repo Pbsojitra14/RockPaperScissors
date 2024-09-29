@@ -13,7 +13,7 @@ function getComputerChoice()
     {
         return "ROCK";
     }
-    else if(compChoice>ROCKRANGE || compChoice<= PAPERRANGE)
+    else if(compChoice>ROCKRANGE && compChoice<= PAPERRANGE)
     {
         return "PAPER";
     }
@@ -45,4 +45,73 @@ function Game(totalRounds = 5)
     console.log("GAME OVER!")
 }
 
-Game();
+const doc = document.querySelector("body");
+let buttonRock    = document.createElement("button");
+let buttonPaper   = document.createElement("button");
+let buttonScissor = document.createElement("button");
+
+buttonRock.innerText = "Select Rock"
+buttonPaper.innerText = "Select Paper"
+buttonScissor.innerText = "Select Scissors"
+
+doc.appendChild(buttonRock);
+doc.appendChild(buttonPaper);
+doc.appendChild(buttonScissor);
+
+let accouncer = document.createElement("h1")
+accouncer.innerText="The Winner is !";
+doc.appendChild(accouncer);
+
+buttonPaper.addEventListener("click", ()=>
+{
+    let compChoice = getComputerChoice();
+    if(compChoice =="ROCK")
+    {
+        accouncer.innerText="HUMAN Wins!"
+    }
+    else if(compChoice =="PAPER")
+    {
+        accouncer.innerText="Tie!"
+    }
+    else
+    {
+        accouncer.innerText="COMPUTER WIN"
+    }
+}
+)
+
+buttonRock.addEventListener("click", ()=>
+{
+    let compChoice = getComputerChoice();
+    if(compChoice =="ROCK")
+    {
+        accouncer.innerText="tIE!"
+    }
+    else if(compChoice =="PAPER")
+    {
+        accouncer.innerText="COMPUTER WINS!"
+    }
+    else
+    {
+        accouncer.innerText="HUMAN WIN"
+    }
+}
+)
+
+buttonScissor.addEventListener("click", ()=>
+    {
+        let compChoice = getComputerChoice();
+        if(compChoice =="ROCK")
+        {
+            accouncer.innerText="computer Wins!"
+        }
+        else if(compChoice =="PAPER")
+        {
+            accouncer.innerText="HUMANS WIN!"
+        }
+        else
+        {
+            accouncer.innerText="TIE"
+        }
+    }
+    )
